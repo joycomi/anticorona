@@ -10,7 +10,7 @@ import java.util.Date;
 public class Injection {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private Integer bookingId;
     private Integer vaccineId;

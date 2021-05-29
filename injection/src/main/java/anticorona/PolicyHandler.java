@@ -69,7 +69,6 @@ public class PolicyHandler{
         cancellationRepository.save(cancellation);
             
     }
-
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverBookUpdated_AcceptBooking(@Payload BookUpdated bookUpdated){
 
