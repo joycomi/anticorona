@@ -1,34 +1,13 @@
 package anticorona;
 
-import javax.persistence.*;
-import org.springframework.beans.BeanUtils;
-import java.util.List;
-import java.util.Date;
+public class BookUpdated extends AbstractEvent {
 
-@Entity
-@Table(name="Injection_table")
-public class Injection {
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Integer bookingId;
     private Integer vaccineId;
+    private String vcName;
     private Integer userId;
     private String status;
-
-    // @PostPersist
-    // public void onPostPersist(){
-    @PreUpdate
-    public void onPreUpdate(){
-        System.out.println("\n\n##### listener Injeciton-PreUpdate #### : bookingId="+ this.getBookingId().toString()+", Status="+ this.getStatus().toString() + "\n\n");
-
-        VcCompleted vcCompleted = new VcCompleted();
-        BeanUtils.copyProperties(this, vcCompleted);
-        vcCompleted.setStatus("Injected");//접종완료 처리
-        vcCompleted.publishAfterCommit();
-    }
-
 
     public Integer getId() {
         return id;
@@ -51,6 +30,13 @@ public class Injection {
     public void setVaccineId(Integer vaccineId) {
         this.vaccineId = vaccineId;
     }
+    public String getVcName() {
+        return vcName;
+    }
+
+    public void setVcName(String vcName) {
+        this.vcName = vcName;
+    }
     public Integer getUserId() {
         return userId;
     }
@@ -65,8 +51,4 @@ public class Injection {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
-
 }

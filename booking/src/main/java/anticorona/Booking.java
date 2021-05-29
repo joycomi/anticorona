@@ -64,16 +64,20 @@ public class Booking {
 
     }
 
-    // @PostUpdate
-    // public void onPostUpdate(){
-    @PreUpdate
-    public void onPreUpdate(){
+    @PostUpdate
+    public void onPostUpdate(){
+    // @PreUpdate
+    // public void onPreUpdate(){
         System.out.println("\n\n##### listener Booking-onPostUpdate1 ####\n\n");
-        //예약대기 건 예약완료 처리
-        BookUpdated bookUpdated = new BookUpdated();
-        this.setStatus("Reserved");
-        BeanUtils.copyProperties(this, bookUpdated);
-        bookUpdated.publishAfterCommit();
+
+        if(!this.getStatus().matches("Injected")) //Injected외 처리
+        {
+            //예약대기 건 예약완료 처리
+            BookUpdated bookUpdated = new BookUpdated();
+            this.setStatus("Reserved");
+            BeanUtils.copyProperties(this, bookUpdated);
+            bookUpdated.publishAfterCommit();
+        }
     }
 
     //@PreUpdate

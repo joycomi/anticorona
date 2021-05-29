@@ -6,6 +6,7 @@ D:\dev\source\anticorona_id\injection\src\main\java\anticorona\VcCompleted.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\BookCancelled.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\config\kafka\KafkaProcessor.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\InjectionController.java
+D:\dev\source\anticorona_id\injection\src\main\java\anticorona\BookUpdated.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\Injection.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\Cancellation.java
 D:\dev\source\anticorona_id\injection\src\main\java\anticorona\InjectionRepository.java
