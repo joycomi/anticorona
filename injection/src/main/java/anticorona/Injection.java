@@ -17,14 +17,14 @@ public class Injection {
     private Integer userId;
     private String status;
 
-    @PostPersist
-    public void onPostPersist(){
+    // @PostPersist
+    // public void onPostPersist(){
+    @PreUpdate
+    public void onPreUpdate(){
         VcCompleted vcCompleted = new VcCompleted();
         BeanUtils.copyProperties(this, vcCompleted);
         vcCompleted.setStatus("Injected");//접종완료 처리
         vcCompleted.publishAfterCommit();
-
-
     }
 
 

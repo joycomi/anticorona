@@ -23,8 +23,10 @@ public class Booking {
     private Integer userId;
     private String status;
 
-    @PostPersist
-    public void onPostPersist(){
+    // @PostPersist
+    // public void onPostPersist(){
+    @PrePersist
+    public void onPrePersist(){
 
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
@@ -38,12 +40,12 @@ public class Booking {
         // (등록이벤트) http POST /bookings bookingId=1 vaccineId=1, vcName=모더나, userId=1
         // (bookingId=Auto, status=null)
 
-        System.out.println("\n\n##### listener Booking-onPostPersist1 ####\n\n");
+        //System.out.println("\n\n##### listener Booking-onPostPersist1 ####\n\n");
 
         boolean rslt = BookingApplication.applicationContext.getBean(anticorona.external.VaccineService.class)
                 .chkAndModifyStock(this.getVaccineId());
         
-        System.out.println("\n\n##### listener Booking-onPostPersist2 ####\n\n");
+        //System.out.println("\n\n##### listener Booking-onPostPersist2 ####\n\n");
         
         if (rslt) { // 예약가능 상태 : 예약완료 처리
             System.out.println("\n\n##### listener Booking-onPostPersist3 ####\n\n");
@@ -62,8 +64,10 @@ public class Booking {
 
     }
 
-    @PostUpdate
-    public void onPostUpdate(){
+    // @PostUpdate
+    // public void onPostUpdate(){
+    @PreUpdate
+    public void onPreUpdate(){
         System.out.println("\n\n##### listener Booking-onPostUpdate1 ####\n\n");
         //예약대기 건 예약완료 처리
         BookUpdated bookUpdated = new BookUpdated();

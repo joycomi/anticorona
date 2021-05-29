@@ -59,21 +59,9 @@ public class PolicyHandler{
         vaccineRepository.save(vaccine);
             
     }
-    // @StreamListener(KafkaProcessor.INPUT)
-    // public void wheneverStockModified_ModifyStock(@Payload StockModified stockModified){
-
-    //     //System.out.println("\n\n##### 0-listener ModifyStock (stockModified): vaccineId=" + stockModified.getVaccineId().toString() +",stock="+ stockModified.getStock().toString() + "\n\n");
-    //     System.out.println("\n##### 1-listener ModifyStock (stockModified) : " + stockModified.toJson() + "\n");
-
-    //     //if(!stockModified.validate()) return;
-
-    // }
-
 
     @StreamListener(KafkaProcessor.INPUT)
-    //public void whatever(@Payload String eventString){
-    public void whatever(@Payload StockModified stockModified){
-        
+    public void whatever(@Payload String eventString){
         // System.out.println("\n\n##### listener whatever : " + stockModified.toJson() + "\n\n");
         // System.out.println("\n\n##### listener whatever-getEventType() : " + stockModified.getEventType() + "\n\n");
         // //System.out.println("\n\n##### listener whatever : " + eventString + "\n\n");

@@ -30,7 +30,7 @@ public class PolicyHandler{
         injection.setStatus(booked.getStatus()); //상태정보
         injectionRepository.save(injection);
 
-         // Cancellation cancellation = new Cancellation();
+        // Cancellation cancellation = new Cancellation();
         // cancellationRepository.save(cancellation);
             
     }

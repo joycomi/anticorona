@@ -28,7 +28,7 @@ public class PolicyHandler{
 
         Booking booking = bookingRepository.findByBookingId(vcCompleted.getBookingId());
         booking.setStatus(vcCompleted.getStatus());//Injected
-        bookingRepository.save(booking);   
+        bookingRepository.save(booking);
             
     }
 
@@ -45,16 +45,16 @@ public class PolicyHandler{
 
         Iterable<Booking> bookings= bookingRepository.findAll();
 
-        System.out.println("\n\n##### listener UpdateStatus-bookings findAll #### \n\n");
+        //System.out.println("\n\n##### listener UpdateStatus-bookings findAll #### \n\n");
 
         for (Booking booking : bookings) {
-            System.out.println("\n\n##### listener UpdateStatus-bookings-for #### \n\n");
+            //System.out.println("\n\n##### listener UpdateStatus-bookings-for #### \n\n");
             if(booking.getStatus().matches("Wating"))
             {
-                System.out.println("\n\n##### listener UpdateStatus-bookings-for : bookingId="+ booking.getBookingId().toString()+", stock="+ booking.getStatus() +"\n\n");
+                //System.out.println("\n\n##### listener UpdateStatus-bookings-for : bookingId="+ booking.getBookingId().toString()+", stock="+ booking.getStatus() +"\n\n");
 
                 booking.setStatus("Reserved");
-                System.out.println("\n\n##### listener UpdateStatus-bookings-for : bookingId="+ booking.getBookingId().toString()+", stock="+ booking.getStatus() +"\n\n");
+                //System.out.println("\n\n##### listener UpdateStatus-bookings-for : bookingId="+ booking.getBookingId().toString()+", stock="+ booking.getStatus() +"\n\n");
 
                 bookingRepository.save(booking);
 
@@ -65,9 +65,8 @@ public class PolicyHandler{
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whatever(@Payload Booking bookingRecv){
-    //public void whatever(@Payload String eventString){
-        
+    public void whatever(@Payload String eventString){
+    //public void whatever(@Payload Booking bookingRecv){    
         // System.out.println("\n\n##### listener whatever #### \n\n");
 
         // Booking booking = bookingRepository.findByBookingId(bookingRecv.getBookingId());
